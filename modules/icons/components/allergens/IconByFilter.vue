@@ -7,17 +7,16 @@ interface Props {
 
 const props = defineProps<Props>();
 
-
 const filterToIconMap = new Map([
-  [ 'Gluten/Wheat', '/_nuxt/assets/icons/allergens/Wheat.svg' ],
-  [ 'Shellfish', '/_nuxt/assets/icons/allergens/Shellfish.svg' ],
-  [ 'Eggs', '/_nuxt/assets/icons/allergens/Eggs.svg' ],
-  [ 'Soya', '/_nuxt/assets/icons/allergens/Soya.svg' ],
-  [ 'Nuts', '/_nuxt/assets/icons/allergens/Nuts.svg' ],
-  [ 'Dairy', '/_nuxt/assets/icons/allergens/Dairy.svg' ],
-  [ 'Peanut', '/_nuxt/assets/icons/allergens/Peanuts.svg' ],
-  [ 'Vegetarian', '/_nuxt/assets/icons/allergens/Vegetarian.svg' ],
-  [ 'Vegan', '/_nuxt/assets/icons/allergens/Vegan.svg' ],
+  [ 'Gluten/Wheat', 'icons/allergens/Wheat.svg' ],
+  [ 'Shellfish', 'icons/allergens/Shellfish.svg' ],
+  [ 'Eggs', 'icons/allergens/Eggs.svg' ],
+  [ 'Soya', 'icons/allergens/Soya.svg' ],
+  [ 'Nuts', 'icons/allergens/Nuts.svg' ],
+  [ 'Dairy', 'icons/allergens/Dairy.svg' ],
+  [ 'Peanut', 'icons/allergens/Peanuts.svg' ],
+  [ 'Vegetarian', 'icons/allergens/Vegetarian.svg' ],
+  [ 'Vegan', 'icons/allergens/Vegan.svg' ],
 ]);
 
 </script>
@@ -25,7 +24,7 @@ const filterToIconMap = new Map([
 <template>
 
   <img
-    :src="filterToIconMap.get(filter) ?? ''"
+    :src="useAsset(filterToIconMap.get(filter) ?? '')"
     alt="filter"
   >
 

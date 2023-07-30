@@ -25,6 +25,14 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'vue3-carousel-nuxt',
   ],
+  nitro: {
+    prerender: {
+      routes: ['/suggest', '/restaurants', '/'],
+    },
+  },
+  router: {
+    base: '/',
+  },
   runtimeConfig: {
     public: {
       baseURL: process.env.BASE_URL,
