@@ -1,0 +1,13 @@
+.carousel__viewport {
+    height: 100%;
+}
+
+.carousel__track {
+    height: 100%;
+    margin-block-start: 0;
+}
+
+.carousel__slide {
+    justify-content: normal !important;
+    align-items: flex-start !important;
+}
