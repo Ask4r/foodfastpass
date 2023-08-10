@@ -11,5 +11,7 @@ const restaurants = useRestaurants();
 
     <ListOfCards :restaurants="restaurants"/>
 
+    <TheFooter />
+
   </article>
 </template>

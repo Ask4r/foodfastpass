@@ -2,20 +2,31 @@
 
 import { vOnClickOutside } from '@vueuse/components';
 
-
 interface Props {
   isActive: boolean;
   areFiltersActive: boolean;
 }
 
 interface Emits {
-  'update:isActive': [value: boolean];
-  'update:areFiltersActive': [value: boolean];
+  'update:isActive': [ value: boolean ];
+  'update:areFiltersActive': [ value: boolean ];
 }
 
 defineProps<Props>();
 
 const emits = defineEmits<Emits>();
+
+
+const router = useRouter();
+
+const { $pwa } = useNuxtApp();
+
+
+onMounted(() => {
+  $pwa.showInstallPrompt = true;
+  $pwa.offlineReady = false;
+  $pwa.needRefresh = false;
+});
 
 
 function close() {
@@ -34,15 +45,24 @@ function close() {
     <SidebarCross
       @click="close()"
     />
+    <ReturnArrow
+      class="header__return"
+      @click="close(); router.go(-1)"
+    />
     <SidebarFilters
       @click="close(); emits('update:areFiltersActive', true)"
     />
     <SidebarCart
-      @click="close();"
+      @click="close()"
     />
     <SidebarSuggestion
-      @click="close(); $router.push('/suggest')"
+      @click="close(); router.push('/suggest')"
     />
+    <ClientOnly>
+      <SidebarInstall
+        @click="close(); $pwa?.install()"
+      />
+    </ClientOnly>
 
   </nav>
 </template>
@@ -72,6 +92,8 @@ function close() {
   translate: -100%;
 
   transition: all ease .2s;
+
+  z-index: 3000;
 
   &_active {
     translate: 0;

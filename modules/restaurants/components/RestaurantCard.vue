@@ -5,13 +5,9 @@ import type { Restaurant } from '~/modules/restaurants/types';
 
 interface Props {
   restaurant: Restaurant;
-  isActive?: boolean;
 }
 
-const props = withDefaults(
-  defineProps<Props>(),
-  { isActive: false },
-);
+const props = defineProps<Props>();
 
 const backgroundImageCssUrl = `url("${ props.restaurant.photo }")`;
 
@@ -21,20 +17,12 @@ const backgroundImageCssUrl = `url("${ props.restaurant.photo }")`;
   <div
     ref="restaurantCard"
     class="restaurant-card"
-    :class="{'restaurant-card_active': isActive}"
   >
-    <div class="restaurant-card__content">
 
-      <h3 class="restaurant-card__restaurant-name">
-        {{ restaurant.name }}
-      </h3>
+    <h3 class="restaurant-card__restaurant-name">
+      {{ restaurant.name }}
+    </h3>
 
-      <RestaurantCardCollapsibleContent
-        :restaurant="restaurant"
-        :is-active="isActive"
-      />
-
-    </div>
   </div>
 </template>
 
@@ -42,61 +30,35 @@ const backgroundImageCssUrl = `url("${ props.restaurant.photo }")`;
 
 .restaurant-card {
   width: 100%;
-  aspect-ratio: 355 / 185;
+  height: 16rem;
 
   position: relative;
 
   background: v-bind(backgroundImageCssUrl) center / cover no-repeat,
   url("assets/images/default-restaurant-card-image.png") center / cover no-repeat;
 
-  border-radius: 2.5rem;
+  border-radius: 16px;
 
-  &::before {
-    content: '';
-
-    width: 100%;
-    height: 100%;
-
-    position: absolute;
-
-    border-radius: 2.5rem;
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0),
-        rgba(0, 0, 0, 0.4)
-    );
-
-    transition: all linear .3s;
-  }
-
-  &__content {
-    min-height: 100%;
-
-    padding: 1.6rem;
-    box-sizing: border-box;
-
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
+  box-shadow: 0 4px 8px -2px rgba(54, 54, 171, 0.10),
+  0 2px 4px -2px rgba(54, 54, 171, 0.06);
 
   &__restaurant-name {
     margin: 0;
+    padding: 1.2rem 1.6rem;
 
-    color: #FFF;
-    font-size: 3.2rem;
-    font-family: 'Helvetica Neue', sans-serif;
-    font-weight: 550;
-    line-height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 
-  }
+    color: #000;
+    font-family: Inter, serif;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
 
-  &_active {
-    &::before {
-      background: rgba(0, 0, 0, 0.5);
-    }
+    background-color: var(--white-color);
+    border-radius: 0 8px 0 16px;
   }
 }
 

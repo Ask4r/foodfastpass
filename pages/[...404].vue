@@ -81,11 +81,7 @@
     border: none;
     border-radius: 0.8rem;
 
-    font-family: Inter, serif;
-    font-size: 1.8rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 150%; /* 2.7rem */
+    font: 500 normal 1.6rem/1.5 Inter, sans-serif;
 
     text-decoration: none;
 

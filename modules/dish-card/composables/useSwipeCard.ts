@@ -10,49 +10,44 @@ const cardHide = createEventHook();
 
 export default function (target?: any, options?: SwipeToastOptions) {
 
-  const {
-    onShow,
-    onHide,
-  } = { ...options };
+  if (target)
+    onMounted(() => {
 
+      // TODO: change style declaration
+      target.value.style.position = 'fixed';
+      target.value.style.top = '100vh';
+      target.value.style.left = '0';
+      target.value.style.overscrollBehavior = 'none';
 
-  onMounted(() => {
+      const { lengthY, direction } = useSwipe(
+        target,
+        {
+          onSwipe,
+          onSwipeEnd,
+        },
+      );
 
-    // TODO: change style declaration
-    target.value.style.position = 'fixed';
-    target.value.style.top = '100vh';
-    target.value.style.left = '0';
-    target.value.style.overscrollBehavior = 'none';
-
-    const { lengthY, direction } = useSwipe(
-      target,
-      {
-        onSwipe,
-        onSwipeEnd,
-      },
-    );
-
-    function onSwipe() {
-      if (
-        [ 'up', 'down' ].includes(direction.value)
-        && lengthY.value < 0
-      ) {
-        target.value.style.top = `${ -lengthY.value }px`;
+      function onSwipe() {
+        if (
+          [ 'up', 'down' ].includes(direction.value)
+          && lengthY.value < 0
+        ) {
+          target.value.style.top = `${ -lengthY.value }px`;
+        }
       }
-    }
 
-    function onSwipeEnd() {
-      const offsetTop = target.value.offsetTop;
-      if (offsetTop < 0) return;
+      function onSwipeEnd() {
+        const offsetTop = target.value.offsetTop;
+        if (offsetTop < 0) return;
 
-      if (lengthY.value < -200) {
-        hideContent();
-      } else {
-        showContent();
+        if (lengthY.value < -50) {
+          hideContent();
+        } else {
+          showContent();
+        }
       }
-    }
 
-  });
+    });
 
   async function createOffsetTransition(offsetTop: string, duration: number) {
     const animation = target.value.animate(

@@ -24,18 +24,13 @@ onShow(() => {
 
 onHide(() => {
   document.body.style.overscrollBehavior = 'auto';
-  reset();
+  currentSection.value = 1;
 });
 
 
 defineExpose({
   showContent,
 });
-
-
-function reset() {
-  currentSection.value = 1;
-}
 
 </script>
 
@@ -100,7 +95,7 @@ function reset() {
 
   background: var(--white-color);
 
-  z-index: 100;
+  z-index: 9000;
 
   &__top-bar {
     width: 6.7rem;

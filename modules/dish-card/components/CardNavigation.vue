@@ -5,7 +5,7 @@ interface Props {
 }
 
 interface Emits {
-  'update:sectionIndex': [sectionId: number];
+  'update:sectionIndex': [ sectionId: number ];
 }
 
 defineProps<Props>();
@@ -17,21 +17,35 @@ const emits = defineEmits<Emits>();
 <template>
   <nav class="nav">
 
-    <CardNavigationImages
-      :is-active=" sectionIndex === 0"
-      class="nav__item"
+    <div
+      class="nav__item-wrapper"
       @click="emits('update:sectionIndex', 0)"
-    />
-    <CardNavigationMain
-      :is-active=" sectionIndex === 1"
-      class="nav__item"
+    >
+      <CardNavigationImages
+        :is-active=" sectionIndex === 0"
+        class="nav__item"
+      />
+    </div>
+
+    <div
+      class="nav__item-wrapper"
       @click="emits('update:sectionIndex', 1)"
-    />
-    <CardNavigationAdditional
-      :is-active=" sectionIndex === 2"
-      class="nav__item"
+    >
+      <CardNavigationMain
+        :is-active=" sectionIndex === 1"
+        class="nav__item"
+      />
+    </div>
+
+    <div
+      class="nav__item-wrapper"
       @click="emits('update:sectionIndex', 2)"
-    />
+    >
+      <CardNavigationAdditional
+        :is-active=" sectionIndex === 2"
+        class="nav__item"
+      />
+    </div>
 
   </nav>
 </template>
@@ -40,13 +54,17 @@ const emits = defineEmits<Emits>();
 
 .nav {
   width: calc(100% - 2 * 2.4rem);
+  height: 7.2rem;
 
-  padding: 2.4rem 0;
-
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid: auto / repeat(3, 1fr);
 
   background: var(--white-color);
+
+  &__item-wrapper {
+    display: grid;
+    place-items: center;
+  }
 
   &__item {
     width: 2.4rem;

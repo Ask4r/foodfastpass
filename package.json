@@ -1,5 +1,5 @@
 {
-  "name": "foodfastpass",
+  "name": "FoodFastPass",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@nuxtjs/pwa": "^3.3.5",
     "@types/node": "^18.16.19",
     "nuxt": "^3.6.3",
     "sass": "^1.64.0",
@@ -17,6 +18,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
+    "@vite-pwa/nuxt": "^0.1.0",
     "@vueuse/components": "^10.2.1",
     "@vueuse/core": "^10.2.1",
     "@vueuse/nuxt": "^10.2.1",

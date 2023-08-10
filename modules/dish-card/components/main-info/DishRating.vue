@@ -21,7 +21,10 @@ const currentSetRating = ref<number>(0);
 
 watch(
   () => props.dish.id,
-  () => currentSetRating.value = submits[props.dish.id] ?? 0,
+  () => {
+    currentSetRating.value = submits[props.dish.id] ?? 0;
+    isChanged.value = false;
+  },
 );
 
 

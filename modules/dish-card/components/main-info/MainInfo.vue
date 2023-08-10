@@ -32,6 +32,8 @@ const props = defineProps<Props>();
       {{ dish.description }}
     </p>
 
+    <AddButton class="main-info__add-button"/>
+
   </section>
 </template>
 
@@ -39,6 +41,8 @@ const props = defineProps<Props>();
 
 .main-info {
   width: 100%;
+
+  position: relative;
 
   &__info-row {
     margin: 1.2rem 0.8rem 1.2rem 0.8rem;
@@ -50,13 +54,8 @@ const props = defineProps<Props>();
 
   &__price {
     margin: 0;
-
     color: var(--dark-color);
-    font-family: Inter, serif;
-    font-size: 3rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 150%; /* 4.5rem */
+    font: 600 normal 3rem/1.5 Inter, sans-serif;
   }
 
   &__rating {
@@ -89,6 +88,13 @@ const props = defineProps<Props>();
 
     text-align: start;
     white-space: pre-wrap;
+  }
+
+  &__add-button {
+    width: calc(100% - 0.8rem * 2);
+    position: fixed;
+    bottom: 0;
+    left: 0.8rem;
   }
 
 }

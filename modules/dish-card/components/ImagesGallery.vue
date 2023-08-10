@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import { Dish } from '~/modules/dish-card/types';
+import CarouselArrow from '~/modules/icons/components/CarouselArrow.vue';
 
 
 interface Props {
@@ -9,48 +10,81 @@ interface Props {
 
 defineProps<Props>();
 
+
+const carousel = ref();
+
 </script>
 
 <template>
-  <div class="images">
+  <Carousel
+    ref="carousel"
+    :mouse-drag="false"
+    :touch-drag="false"
+    :wrap-around="true"
+    class="images"
+  >
 
-    <img
+    <Slide
       v-for="image in dish.images"
       :key="image"
-      :src="image"
-      alt="Image"
-      class="images__image"
+      class="images__slide"
     >
+      <img
+        :src="image"
+        alt="Image"
+        class="images__image"
+      >
+    </Slide>
 
-  </div>
+  </Carousel>
+
+  <CarouselArrow
+    class="images__arrow"
+    @click="carousel.prev()"
+  />
+  <CarouselArrow
+    class="images__arrow images__arrow_right"
+    @click="carousel.next()"
+  />
+
 </template>
 
 <style scoped lang="scss">
 
 .images {
   width: 100%;
-  height: 80%;
+  height: 100%;
 
-  margin: 0.5rem;
+  position: relative;
 
-  display: grid;
-  grid: 2fr 1fr / 1fr 1fr;
-  grid-template-areas:
-    "first first"
-    "second third";
-  gap: 0.5rem;
-
-  :nth-child(1) { grid-area: first }
-  :nth-child(2) { grid-area: second }
-  :nth-child(3) { grid-area: third }
+  &__slide {
+    display: grid;
+    place-content: center;
+  }
 
   &__image {
-    width: 100%;
-    height: 100%;
+    width: calc(100% - 2 * 0.8rem);
 
-    border-radius: 1.5rem;
+    margin: 0 0.8rem;
 
-    object-fit: cover;
+    border-radius: 1.6rem;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    left: 1.6rem;
+
+    translate: 0 -50%;
+
+    rotate: 180deg;
+
+    &_right {
+      left: auto;
+      right: 1.6rem;
+
+      rotate: 360deg;
+    }
   }
 }
 

@@ -1,5 +1,4 @@
 import type { Dish } from '~/modules/menu/types';
-import type{ Ref } from 'vue';
 
 
 const currentDish = ref<Dish | null>(null);

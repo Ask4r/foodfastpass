@@ -8,12 +8,27 @@ interface Props {
   dishes: Dish[];
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
 
+
+const table = ref();
 
 const { areFiltersApproved } = useFilters();
 
+const { scrollSetCategory } = useCategoryScrollObserver();
+
 const showDishCard = inject('showDishCard') as Function;
+
+const onMenuScroll = inject('onMenuScroll') as Function;
+
+
+onMenuScroll((scroll: number) => {
+  const top = table.value.offsetTop - scroll;
+  const bottom = top + table.value.clientHeight;
+
+  if (top < 150 && 150 < bottom)
+    scrollSetCategory(props.categoryName)
+});
 
 
 function handleDishSelect(dish: Dish) {
@@ -21,37 +36,96 @@ function handleDishSelect(dish: Dish) {
   showDishCard();
 }
 
+function makeUnresizable(element: HTMLElement) {
+  const width = element.clientWidth;
+  const height = element.clientHeight;
+  element.style.width = width + 'px';
+  element.style.height = height + 'px';
+}
+
+function returnResizable(element: HTMLElement) {
+  element.style.width = 'auto';
+  element.style.height = 'auto';
+}
+
+function fixPosition(element: HTMLElement) {
+  const top = element.offsetTop;
+  const left = element.offsetLeft;
+  element.style.top = top + 'px';
+  element.style.left = left + 'px';
+}
+
+function beforeTransitionLeave(element: HTMLElement) {
+  makeUnresizable(element);
+  fixPosition(element);
+}
+
+function beforeTransitionEnter(element: HTMLElement) {
+  returnResizable(element);
+}
+
 </script>
 
 <template>
-  <section
-    v-if="dishes.some(dish => areFiltersApproved(dish.filters))"
-    class="table"
-  >
+    <section
+      ref="table"
+      v-show="dishes.some(dish => areFiltersApproved(dish))"
+      class="table"
+    >
 
-    <header class="table__table-name">
-      {{ categoryName }}
-    </header>
+      <header class="table__table-name">
+        {{ categoryName }}
+      </header>
 
-    <main class="table__dishes">
+      <main class="table__dishes">
 
-      <DishPreview
-        v-for="dish in dishes"
-        :key="dish.id"
-        :dish="dish"
-        :is-active="areFiltersApproved(dish.filters)"
-        @click="handleDishSelect(dish)"
-      />
+        <transition-group
+          name="dish"
+          @before-leave="beforeTransitionLeave"
+          @before-enter="beforeTransitionEnter"
+        >
+          <DishPreview
+            v-for="dish in dishes"
+            :key="dish.id"
+            :dish="dish"
+            :is-active="areFiltersApproved(dish)"
+            @click="handleDishSelect(dish)"
+          />
 
-    </main>
+        </transition-group>
 
-  </section>
+      </main>
+
+    </section>
 </template>
 
 <style scoped lang="scss">
 
+.dish {
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+  }
+
+  &-move,
+  &-leave-active {
+    transition: all .5s ease;
+  }
+
+  &-enter-active {
+    transition: opacity .5s ease;
+  }
+
+  &-leave-active {
+    position: absolute;
+  }
+}
+
+
 .table {
   width: 100%;
+
+  position: relative;
 
   display: flex;
   flex-direction: column;
@@ -83,7 +157,7 @@ function handleDishSelect(dish: Dish) {
     box-sizing: border-box;
 
     display: grid;
-    grid: auto / repeat(auto-fill, minmax(13.5rem, 1fr));
+    grid: auto / repeat(auto-fill, minmax(13rem, 1fr));
     gap: 1.2rem;
 
     border-left: 1.5px solid var(--light-color);

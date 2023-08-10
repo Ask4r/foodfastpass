@@ -14,20 +14,27 @@
     /*--background-dark: #D9D9D9;*/
 
 
-    /*--primary-color: oklch(51.7% 0.262 284.31);*/
+    /*--primary-color: oklch(51.7% 0.262 284.31);
     --secondary-color: oklch(64.51% 0.17 307.01);
     --accent-color: oklch(24.78% 0.096 306.52);
 
     --background-light: oklch(93.97% 0.003 354.7);
     --background-medium: oklch(96.72% 0 0);
-    --background-dark: oklch(88.53% 0 0);
+    --background-dark: oklch(88.53% 0 0);*/
 
 
-    --primary-color: #6432F4;
+    /*--primary-color: #6432F4;
     --light-color: #D3D3FF;
     --medium-color: #A8A8FF;
     --dark-color: #3636AB;
-    --white-color: #FFF;
+    --white-color: #FFF;*/
+
+    --primary-color: oklch(53.67% 0.2886 284.4233);
+    --light-color: oklch(87.27% 0.0717 285.9242);
+    --medium-color: oklch(73.22% 0.1559 283.4161);
+    --dark-color: oklch(35.05% 0.2235 274.2073);
+    --white-color: oklch(100% 0 0);
+
 }
 
 html {

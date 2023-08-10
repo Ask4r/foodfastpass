@@ -48,6 +48,7 @@ defineProps<Props>();
 
 .dish {
   padding: 0.8rem;
+  box-sizing: border-box;
 
   display: grid;
   grid: min-content auto min-content / auto;
@@ -58,7 +59,7 @@ defineProps<Props>();
 
   /* shadow md */
   box-shadow: 0 4px 8px -2px rgba(54, 54, 171, 0.10),
-  0px 2px 4px -2px rgba(54, 54, 171, 0.06);
+  0 2px 4px -2px rgba(54, 54, 171, 0.06);
 
   &__image {
     width: 100%;
@@ -84,6 +85,8 @@ defineProps<Props>();
   }
 
   &__bottom-info {
+    height: 2.16rem;
+
     display: inline-flex;
     justify-content: space-between;
     align-items: flex-end;

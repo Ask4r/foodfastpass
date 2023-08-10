@@ -1,14 +1,24 @@
+<script setup lang="ts">
+
+const router = useRouter();
+
+</script>
+
 <template>
   <header class="header">
 
-    <img
-      src="~/assets/icons/main-logo.svg"
-      alt="Logo"
-      class="header__logo">
+    <BurgerMenu
+      class="header__burger"
+    />
 
     <h1 class="header__title">
-      FoodFastPass
+      Restaurants
     </h1>
+
+    <ReturnArrow
+      class="header__return"
+      @click="router.go(-1)"
+    />
 
   </header>
 </template>
@@ -17,38 +27,36 @@
 
 .header {
   width: 100%;
-  height: 8rem;
+
+  padding: 2.4rem;
+  box-sizing: border-box;
 
   position: fixed;
   top: 0;
 
-  background-color: white;
-  z-index: 1000;
+  display: grid;
+  grid: auto / 2rem auto 2rem;
+  place-items: center;
 
-  &__logo {
-    width: 4.8rem;
-    height: 4.8rem;
+  border-radius: 0 0 0.8rem 0.8rem;
+  background: var(--white-color);
 
-    position: fixed;
-    top: 1.6rem;
-    left: 2rem;
-  }
+  /* shadow lg */
+  box-shadow: 0 12px 16px -4px rgba(54, 54, 171, 0.08),
+  0 4px 6px -2px rgba(54, 54, 171, 0.03);
+
+  z-index: 2000;
 
   &__title {
     margin: 0;
 
-    position: fixed;
-    top: 3rem;
-    left: 50%;
-    translate: -50%;
-
-    color: var(--primary-color);
-    font-size: 2rem;
-    font-family: 'Helvetica Neue', serif;
+    color: #000;
+    font-family: Inter, serif;
+    font-size: 2.4rem;
+    font-style: normal;
     font-weight: 400;
-    line-height: 100%;
-    text-align: center;
+    line-height: 150%;
   }
-
 }
+
 </style>

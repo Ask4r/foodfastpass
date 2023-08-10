@@ -26,6 +26,12 @@ export default function (rawDishes: RawDish[]): Categories {
       images.push('/images/default-restaurant-card-image.png');
 
 
+    const description = dish.description?.replaceAll(
+      /(\s*\n+)+/g,
+      '\n',
+    );
+
+
     let foodProperties: FoodProperties = {
       'Net weight': { value: dish.grams, unit: 'g', main: true },
       'Energy value': { value: dish.calories, unit: 'kcal', main: true },
@@ -41,8 +47,8 @@ export default function (rawDishes: RawDish[]): Categories {
       images: images,
       filters: dish.filters,
       rating: Number(dish.ratings),
-      description: dish.description ?? undefined,
-      foodProperties: foodProperties ?? undefined,
+      description: description,
+      foodProperties: foodProperties,
     };
 
     categories[category].push(parsedDish);

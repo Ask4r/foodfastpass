@@ -24,14 +24,51 @@ export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
     'vue3-carousel-nuxt',
+    '@vite-pwa/nuxt',
   ],
   nitro: {
     prerender: {
-      routes: ['/suggest', '/restaurants', '/'],
+      routes: [ '/', '/suggest', '/restaurants' ],
     },
   },
-  router: {
-    base: '/',
+  pwa: {
+    registerType: 'autoUpdate',
+    manifest: {
+      name: 'FoodFastPass',
+      short_name: 'FoodFastPass',
+      theme_color: '#ffffff',
+      icons: [
+        {
+          src: 'pwa-192x192.png',
+          sizes: '192x192',
+          type: 'image/png',
+        },
+        {
+          src: 'pwa-512x512.png',
+          sizes: '512x512',
+          type: 'image/png',
+        },
+        {
+          src: 'pwa-512x512.png',
+          sizes: '512x512',
+          type: 'image/png',
+          purpose: 'any maskable',
+        },
+      ],
+    },
+    workbox: {
+      navigateFallback: '/',
+      globPatterns: [ '**/*.{js,css,html,png,svg,ico}' ],
+    },
+    client: {
+      installPrompt: true,
+    },
+    devOptions: {
+      enabled: true,
+      suppressWarnings: true,
+      navigateFallbackAllowlist: [ /^\/$/ ],
+      type: 'module',
+    },
   },
   runtimeConfig: {
     public: {
