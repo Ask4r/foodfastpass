@@ -7,10 +7,10 @@
     width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
   >
-    <circle cx="17" cy="17" r="17" fill="#349F4C"/>
-    <rect x="5" y="5" width="23" height="23" fill="url(#pattern0)"/>
+    <circle cx="17" cy="17" r="17" fill="var(--green-color)"/>
+    <rect x="5" y="5" width="23" height="23" fill="url(#patternPeanuts)"/>
     <defs>
-      <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+      <pattern id="patternPeanuts" patternContentUnits="objectBoundingBox" width="1" height="1">
         <use xlink:href="#image0_902_70" transform="scale(0.00208333)"/>
       </pattern>
       <image

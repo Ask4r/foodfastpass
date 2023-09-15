@@ -20,16 +20,32 @@ export default defineNuxtConfig({
     '@/assets/css/main.css',
     '@/assets/css/vue3-carousel-custom.css',
   ],
+  devServerHandlers: [],
   devtools: { enabled: false },
   modules: [
     '@vueuse/nuxt',
     'vue3-carousel-nuxt',
     '@vite-pwa/nuxt',
+    // 'nuxt-stripe-module',
+
+    '~/modules/user-side/account',
+    '~/modules/user-side/cart',
+    '~/modules/user-side/dish-card',
+    '~/modules/user-side/filters',
+    '~/modules/user-side/menu',
+    '~/modules/user-side/order',
+    '~/modules/user-side/restaurants',
+    '~/modules/user-side/sidebar',
+    '~/modules/user-side/waitlist',
+
+    '~/modules/b-o-h-side/auth',
+    '~/modules/b-o-h-side/orders',
   ],
   nitro: {
     prerender: {
       routes: [ '/', '/suggest', '/restaurants' ],
     },
+    devHandlers: [],
   },
   pwa: {
     registerType: 'autoUpdate',
@@ -73,6 +89,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       baseURL: process.env.BASE_URL,
+      publishableKey: process.env.NUXT_PUBLISHABLE_KEY,
     },
   },
 });

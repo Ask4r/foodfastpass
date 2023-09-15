@@ -1,5 +1,16 @@
 <script setup lang="ts">
 
+import Dairy from './Dairy.vue';
+import Eggs from './Eggs.vue';
+import Nuts from './Nuts.vue';
+import Peanuts from './Peanuts.vue';
+import Shellfish from './Shellfish.vue';
+import Soy from './Soy.vue';
+import Vegan from './Vegan.vue';
+import Vegetarian from './Vegetarian.vue';
+import Wheat from './Wheat.vue';
+
+
 interface Props {
   filter: string;
 }
@@ -7,26 +18,23 @@ interface Props {
 
 const props = defineProps<Props>();
 
-const filterToIconMap = new Map([
-  [ 'Gluten/Wheat', 'icons/allergens/Wheat.svg' ],
-  [ 'Shellfish', 'icons/allergens/Shellfish.svg' ],
-  [ 'Eggs', 'icons/allergens/Eggs.svg' ],
-  [ 'Soya', 'icons/allergens/Soya.svg' ],
-  [ 'Nuts', 'icons/allergens/Nuts.svg' ],
-  [ 'Dairy', 'icons/allergens/Dairy.svg' ],
-  [ 'Peanut', 'icons/allergens/Peanuts.svg' ],
-  [ 'Vegetarian', 'icons/allergens/Vegetarian.svg' ],
-  [ 'Vegan', 'icons/allergens/Vegan.svg' ],
-]);
+const filterToIcon = {
+  'Gluten/Wheat': Wheat,
+  Shellfish: Shellfish,
+  Eggs: Eggs,
+  Soya: Soy,
+  Nuts: Nuts,
+  Dairy: Dairy,
+  Peanut: Peanuts,
+  Vegetarian: Vegetarian,
+  Vegan: Vegan,
+};
 
 </script>
 
 <template>
 
-  <img
-    :src="useAsset(filterToIconMap.get(filter) ?? '')"
-    alt="filter"
-  >
+  <component :is="filterToIcon[filter]"></component>
 
 </template>
 

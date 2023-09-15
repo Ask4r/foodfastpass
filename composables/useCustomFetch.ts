@@ -1,7 +1,8 @@
-import type { UseFetchOptions } from '#app';
+import { UseFetchOptions } from '#app';
 import { defu } from 'defu';
 
-export function useCustomFetch<T>(
+
+export default function <T>(
   url: string,
   options: UseFetchOptions<T> = {},
 ) {
@@ -19,6 +20,7 @@ export function useCustomFetch<T>(
 
     onResponseError(_ctx) {
       // throw new myBusinessError()
+      console.error(_ctx);
     },
   };
 

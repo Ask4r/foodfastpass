@@ -33,7 +33,7 @@ async function share() {
   <article class="suggest">
 
     <div class="suggest__top">
-      <SuggestIcon/>
+      <SuggestIcon :color="'var(--dark-color)'" class="suggest__suggest-icon"/>
       <p class="suggest__header">suggest</p>
     </div>
 
@@ -88,37 +88,27 @@ async function share() {
     align-items: center;
   }
 
-  &__header {
-    margin: 0;
+  &__suggest-icon {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
 
+  &__header {
     color: var(--dark-color);
-    font-family: Inter, serif;
-    font-size: 1.6rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 150%; /* 2.4rem */
+    font: 600 normal 1.6rem/1.5 Inter, sans-serif;
   }
 
   &__title {
     margin: 0 0 1.6rem 0;
-
-    color: #000;
-    font-family: Inter, serif;
-    font-size: 3.6rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 120%; /* 4.32rem */
+    color: var(--black-color);
+    font: 600 normal 3.6rem/1.2 Inter, sans-serif;
   }
 
   &__description {
     margin: 0 0 3.2rem 0;
 
     color: var(--dark-color);
-    font-family: Inter, serif;
-    font-size: 1.8rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 150%; /* 2.7rem */
+    font: 500 normal 1.8rem/1.5 Inter, sans-serif;
   }
 
   &__textarea {
@@ -130,12 +120,8 @@ async function share() {
     padding: 1.2rem 1.4rem;
     box-sizing: border-box;
 
-    color: #000;
-    font-family: Inter, serif;
-    font-size: 1.8rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 150%; /* 2.7rem */
+    color: var(--black-color);
+    font: 500 normal 1.8rem/1.5 Inter, sans-serif;
 
     border-radius: 0.8rem;
     border: 1px solid var(--light-color);
@@ -146,11 +132,7 @@ async function share() {
 
     &::placeholder {
       color: var(--medium-color);
-      font-family: Inter, serif;
-      font-size: 1.8rem;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 150%; /* 2.7rem */
+      font: 500 normal 1.8rem/1.5 Inter, sans-serif;
     }
 
     &:focus {
@@ -161,13 +143,8 @@ async function share() {
 
   &__thanks {
     margin: 0 0 10.3rem 0;
-
-    color: #000;
-    font-family: Inter, serif;
-    font-size: 1.8rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 150%; /* 2.7rem */
+    color: var(--black-color);
+    font: 600 normal 1.8rem/1.5 Inter, sans-serif;
   }
 
   &__button {
@@ -176,7 +153,6 @@ async function share() {
     margin-bottom: 1.2rem;
 
     padding: 1.2rem 2rem;
-    box-sizing: border-box;
 
     display: flex;
     justify-content: center;
@@ -186,11 +162,7 @@ async function share() {
     border: none;
     border-radius: 0.8rem;
 
-    font-family: Inter, serif;
-    font-size: 1.8rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 150%; /* 2.7rem */
+    font: 500 normal 1.8rem/1.5 Inter, sans-serif;
 
     transition: all ease .2s;
 

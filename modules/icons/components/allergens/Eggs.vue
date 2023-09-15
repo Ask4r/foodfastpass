@@ -11,10 +11,10 @@
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
   >
-    <circle cx="17" cy="17" r="17" fill="#349F4C"/>
-    <rect x="7" y="7" width="20" height="20" fill="url(#pattern0)"/>
+    <circle cx="17" cy="17" r="17" fill="var(--green-color)"/>
+    <rect x="7" y="7" width="20" height="20" fill="url(#patternEggs)"/>
     <defs>
-      <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+      <pattern id="patternEggs" patternContentUnits="objectBoundingBox" width="1" height="1">
         <use xlink:href="#image0_902_19" transform="scale(0.002)"/>
       </pattern>
       <image
