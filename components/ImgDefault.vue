@@ -7,7 +7,7 @@ withDefaults(
     defaultSrc?: string;
   }>(),
   {
-    defaultSrc: '/_nuxt/assets/images/default-restaurant-card-image.png',
+    defaultSrc: 'default-restaurant-card-image.png',
   },
 );
 

@@ -33,7 +33,7 @@ const backgroundImageCssUrl = `url("${ props.restaurant.photo }")`;
   position: relative;
 
   background: v-bind(backgroundImageCssUrl) center / cover no-repeat,
-  url("assets/images/default-restaurant-card-image.png") center / cover no-repeat;
+  url("/default-restaurant-card-image.png") center / cover no-repeat;
 
   border-radius: 16px;
 
