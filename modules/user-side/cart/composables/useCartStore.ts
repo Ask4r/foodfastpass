@@ -22,6 +22,11 @@ function remove(dish: Dish) {
     cart.value[dish.id].quantity--;
 }
 
+function refresh() {
+  for (const dishId in cart.value)
+    delete cart.value[dishId]
+}
+
 function priceSum(): string {
   if (Object.keys(cart.value).length == 0)
     return '0';
@@ -80,5 +85,6 @@ export default function () {
     remove,
     priceSum,
     isCheckoutReady,
+    refresh
   };
 }

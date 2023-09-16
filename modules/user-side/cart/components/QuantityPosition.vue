@@ -13,12 +13,11 @@ const dish = cart.value[props.dishId].dish;
 <template>
   <li class="dish">
 
-    <img
+    <ImgDefault
       :src="dish.images[0]"
       :alt="dish.name"
-      @error="event => {event.target.src = '/_nuxt/assets/images/default-restaurant-card-image.png'}"
       class="dish__image"
-    >
+    />
 
     <p class="dish__title">{{dish.name}}</p>
 

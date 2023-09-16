@@ -1,26 +1,23 @@
 <script setup lang="ts">
 
-import type { Dish } from '~/modules/menu/types';
+import type { Dish } from '~/modules/user-side/menu/types';
 
 
-interface Props {
+defineProps<{
   dish: Dish;
   isActive: boolean;
-}
-
-defineProps<Props>();
+}>();
 
 </script>
 
 <template>
   <div class="dish" v-show="isActive">
 
-    <img
+    <ImgDefault
       :src="dish.images[0]"
       :alt="dish.name"
       class="dish__image"
-      @error="event => {event.target.src = '/_nuxt/assets/images/default-restaurant-card-image.png'}"
-    >
+    />
 
     <p class="dish__food-name">
       {{ dish.name }}

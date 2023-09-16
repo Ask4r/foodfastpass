@@ -1,23 +1,20 @@
 <script setup lang="ts">
 
-import { Dish } from '~/modules/dish-card/types';
+import { Dish } from '~/modules/user-side/menu/types';
 
 
-interface Props {
+defineProps<{
   dish: Dish;
-}
-
-defineProps<Props>();
+}>();
 
 </script>
 
 <template>
-  <img
+  <ImgDefault
     :src="dish.images[0]"
     alt="Dish image"
     class="image"
-    @error="event => {event.target.src = '/_nuxt/assets/images/default-restaurant-card-image.png'}"
-  >
+  />
 </template>
 
 <style scoped lang="scss">

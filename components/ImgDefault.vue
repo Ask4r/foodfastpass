@@ -7,7 +7,7 @@ withDefaults(
     defaultSrc?: string;
   }>(),
   {
-    defaultSrc: 'default-restaurant-card-image.png',
+    defaultSrc: '/default-restaurant-card-image.png',
   },
 );
 

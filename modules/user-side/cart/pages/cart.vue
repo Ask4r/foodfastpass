@@ -9,7 +9,12 @@ const currentTimeslot = ref({
 
 const coupon = ref('');
 
-const { priceSum, isCheckoutReady, cart } = useCartStore();
+const {
+  priceSum,
+  isCheckoutReady,
+  cart,
+  refresh: refreshCart,
+} = useCartStore();
 
 const clientSecret = ref('');
 
@@ -23,11 +28,15 @@ async function handlePostOrder() {
 
   const result = await stripeForm.value.payWithCard(response ?? '');
 
-  if (result.hasOwnProperty('error')) {
+  if (result.hasOwnProperty('error'))
     error.value = true;
-  } else {
-    error.value = false;
-  }
+
+
+  error.value = false;
+
+  refreshCart();
+
+  navigateTo('/');
 }
 
 </script>
