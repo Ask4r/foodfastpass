@@ -43,7 +43,7 @@ function submit() {
       Sign in
     </button>
 
-    <NuxtLink href="/registration" class="registration__link">Don't have account yet? Sign up.</NuxtLink>
+    <NuxtLink href="/registration" class="registration__link">Don't have an account yet? Sign up.</NuxtLink>
 
   </section>
 </template>

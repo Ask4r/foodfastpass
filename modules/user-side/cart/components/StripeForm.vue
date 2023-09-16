@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import { loadStripe } from '@stripe/stripe-js/pure';
+import { loadStripe } from '@stripe/stripe-js';
 
 
 defineExpose({
