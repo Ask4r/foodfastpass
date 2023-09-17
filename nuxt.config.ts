@@ -43,11 +43,8 @@ export default defineNuxtConfig({
   ],
   nitro: {
     prerender: {
-      crawlLinks: false,
-      failOnError: false,
-      routes: [ '/', '/suggest', '/restaurants' ],
+      ignore: [ '/', '/restaurants', '/boh/orders', ],
     },
-    devHandlers: [],
   },
   pwa: {
     registerType: 'autoUpdate',
