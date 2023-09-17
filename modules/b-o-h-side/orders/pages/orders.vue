@@ -11,7 +11,7 @@ provide('refreshOrders', refreshOrders);
 
 async function refreshOrders() {
   orders.value = await getBOHOrders();
-  console.log(orders.value)
+  console.log(orders.value);
 }
 
 </script>
@@ -23,21 +23,23 @@ async function refreshOrders() {
 
     <main class="orders__main">
 
-      <div class="orders__queue">
-        <QueueOrder
-          v-for="order in orders"
-          :key="order.orderId"
-          :order="order"
-        />
-      </div>
+      <client-only>
+        <div class="orders__queue">
+          <QueueOrder
+            v-for="order in orders"
+            :key="order.orderId"
+            :order="order"
+          />
+        </div>
+      </client-only>
 
-<!--      <div class="orders__complete">
-        <DoneOrder
-          v-for="order in doneOrders"
-          :key="order.orderId"
-          :order="order"
-        />
-      </div>-->
+      <!--      <div class="orders__complete">
+              <DoneOrder
+                v-for="order in doneOrders"
+                :key="order.orderId"
+                :order="order"
+              />
+            </div>-->
 
     </main>
 

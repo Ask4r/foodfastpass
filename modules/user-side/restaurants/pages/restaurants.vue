@@ -11,7 +11,9 @@ const restaurants = useRestaurants();
 
     <main class="restaurants-list__main">
 
-      <ListOfOrders />
+      <client-only>
+        <ListOfOrders />
+      </client-only>
 
       <ListOfCards :restaurants="restaurants"/>
 
