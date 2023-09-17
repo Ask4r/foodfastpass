@@ -22,6 +22,9 @@ export default defineNuxtConfig({
   ],
   devServerHandlers: [],
   devtools: { enabled: false },
+  experimental: {
+    payloadExtraction: false,
+  },
   modules: [
     '@vueuse/nuxt',
     'vue3-carousel-nuxt',
@@ -43,7 +46,7 @@ export default defineNuxtConfig({
   ],
   nitro: {
     prerender: {
-      ignore: [ '/', '/restaurants', '/boh/orders', ],
+      /*ignore: [ '/', '/restaurants', '/boh/orders', ],*/
     },
   },
   pwa: {
