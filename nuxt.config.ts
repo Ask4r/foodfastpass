@@ -47,6 +47,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       routes: [ '/' ],
+      ignore: [ '/menu', '/confirm' ],
     },
   },
   pwa: {
@@ -94,4 +95,5 @@ export default defineNuxtConfig({
       publishableKey: process.env.NUXT_PUBLISHABLE_KEY,
     },
   },
+  ssr: false,
 });
