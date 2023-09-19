@@ -19,19 +19,18 @@ defineProps<{
       class="dish__image"
     />
 
+    <p class="dish__price">
+      {{ dish.price }}
+    </p>
+
     <p class="dish__food-name">
       {{ dish.name }}
     </p>
 
-    <div class="dish__bottom-info">
-
-      <SpecialPropertyPlate :dish="dish"/>
-
-      <p class="dish__price">
-        {{ dish.price }}
-      </p>
-
-    </div>
+    <DishAddButton
+      :dish="dish"
+      class="dish__bottom-info"
+    />
 
   </div>
 </template>
@@ -44,7 +43,7 @@ defineProps<{
 
   display: grid;
   grid: min-content auto min-content / auto;
-  gap: 2rem;
+  gap: 0.8rem;
 
   border-radius: 1.6rem;
   background: var(--white-color);
@@ -70,14 +69,6 @@ defineProps<{
     font: 400 normal 1.6rem/1.5 Inter, sans-serif;
 
     word-break: break-word;
-  }
-
-  &__bottom-info {
-    height: 2.16rem;
-
-    display: inline-flex;
-    justify-content: space-between;
-    align-content: flex-end;
   }
 
   &__price {

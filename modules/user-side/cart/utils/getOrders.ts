@@ -3,14 +3,14 @@ import { Order } from '~/modules/user-side/order/types';
 
 export default async function (): Promise<Order[] | undefined> {
 
-  const token =  useAuthToken();
+  const token= useAuthToken();
 
   if (token.length === 0) {
     navigateTo('/account');
     return;
   }
 
-  const { data } = await useCustomFetch(
+  const { data, refresh } = await useCustomFetch(
     '/order/GetUserOrders/',
     {
       method: 'GET',
@@ -20,7 +20,7 @@ export default async function (): Promise<Order[] | undefined> {
     },
   );
 
-  console.log(data.value)
+  await refresh()
 
   return data.value as Order[];
 }

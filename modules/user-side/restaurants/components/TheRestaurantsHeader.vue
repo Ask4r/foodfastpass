@@ -2,23 +2,25 @@
 
 const router = useRouter();
 
+const showSideBar = inject('showSideBar') as Function;
+
 </script>
 
 <template>
   <header class="header">
 
-<!--    <BurgerMenu-->
-<!--      class="header__burger"-->
-<!--    />-->
+    <BurgerMenu
+      class="header__burger"
+      @click="showSideBar"
+    />
 
     <h1 class="header__title">
-      Restaurants
+      FoodFastPass
     </h1>
 
-<!--    <ReturnArrow-->
-<!--      class="header__return"-->
-<!--      @click="router.go(-1)"-->
-<!--    />-->
+    <SearchIcon
+      class="header__search"
+    />
 
   </header>
 </template>
@@ -35,7 +37,7 @@ const router = useRouter();
   top: 0;
 
   display: grid;
-  grid: ". title ." auto / 2rem auto 2rem;
+  grid: "menu title search" auto / 2rem auto 2rem;
   place-items: center;
 
   border-radius: 0 0 0.8rem 0.8rem;

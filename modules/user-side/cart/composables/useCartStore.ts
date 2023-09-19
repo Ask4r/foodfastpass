@@ -53,6 +53,10 @@ function isCheckoutReady(): boolean {
   let dishesAmount = 0;
 
   for (const position in cart.value) {
+
+    if (cart.value[position].quantity === 0)
+      continue;
+
     const name = cart.value[position].dish?.restaurantName;
     restaurantNames.add(name);
 

@@ -1,26 +1,23 @@
-import { aw } from '~/dist/_nuxt/entry.a1124aa2';
-
-
 export default async function () {
 
   const token = useAuthToken();
 
   if (token.length === 0) {
-    navigateTo('/boh/auth');
+    navigateTo('/');
     return;
   }
 
-  const { data, refresh } = await useCustomFetch(
-    '/boh/GetAllOrder/',
+
+  const { data } = await useCustomFetch(
+    '/order/GetOrderInfo/',
     {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${ token }`,
       },
-    },
+    }
   );
 
-  await refresh();
 
-  return data.value;
+  console.log(data.value);
 }

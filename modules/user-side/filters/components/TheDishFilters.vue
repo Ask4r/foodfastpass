@@ -3,17 +3,13 @@
 import { vOnClickOutside } from '@vueuse/components';
 
 
-interface Props {
+defineProps<{
   isActive: boolean;
-}
+}>();
 
-interface Emits {
+const emits = defineEmits<{
   'update:isActive': [ value: boolean ];
-}
-
-defineProps<Props>();
-
-const emits = defineEmits<Emits>();
+}>();
 
 
 const {
@@ -81,6 +77,7 @@ function hideFilters() {
       :is-resettable="isResettable"
       class="filters__header"
       @reset="reset"
+      @exit="emits('update:isActive', false)"
     />
 
     <GroupCheckboxes

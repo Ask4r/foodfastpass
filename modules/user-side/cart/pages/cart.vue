@@ -34,9 +34,13 @@ async function handlePostOrder() {
 
   error.value = false;
 
+  await submitOrder();
+
   refreshCart();
 
-  navigateTo('/');
+
+
+  navigateTo('/restaurants');
 }
 
 </script>

@@ -22,6 +22,7 @@ const { height: headerHeight } = useElementBounding(header);
 
 
 provide('showDishCard', showDishCard);
+provide('showFilters', showFilters);
 provide('setScrollTop', setScrollTop);
 provide('onMenuScroll', menuScroll.on);
 
@@ -35,6 +36,10 @@ onFiltersChange(() => {
 
 function showDishCard() {
   dishCard.value.showContent();
+}
+
+function showFilters() {
+  areFiltersActive.value = true;
 }
 
 function setScrollTop(scroll: number) {
@@ -66,12 +71,10 @@ function onMenuScroll() {
 
     <MealType class="menu__meal"/>
 
-<!--    <ClientOnly>-->
-      <ListOfCategories
-        :categories="categories"
-        class="menu__categories"
-      />
-<!--    </ClientOnly>-->
+    <ListOfCategories
+      :categories="categories"
+      class="menu__categories"
+    />
 
     <TheDishFilters
       v-model:is-active="areFiltersActive"
@@ -84,7 +87,9 @@ function onMenuScroll() {
       />
     </Teleport>
 
-    <TheMenuFooter/>
+    <OrderPlate />
+
+    <TheMenuFooter class="menu__footer"/>
 
   </article>
 </template>

@@ -1,14 +1,12 @@
 <script setup lang="ts">
 
-import type { Dish } from '~/modules/menu/types';
+import type { Dish } from '~/modules/user-side/menu/types';
 
 
-interface Props {
+const props = defineProps<{
   categoryName: string;
   dishes: Dish[];
-}
-
-const props = defineProps<Props>();
+}>();
 
 
 const table = ref();
@@ -76,18 +74,22 @@ function handleDishSelect(dish: Dish) {
   align-items: flex-start;
   align-self: stretch;
 
+  filter: drop-shadow(1px -1px 6px rgba(54, 54, 171, 0.10))
+    drop-shadow(0px 4px 4px rgba(54, 54, 171, 0.25));
+
   &__table-name {
     height: min-content;
 
     padding: 0.2rem 0.8rem;
 
-    color: #000;
+    color: var(--black-color);
     font: 300 normal 1.8rem/1.5 Inter, sans-serif;
 
     white-space: nowrap;
 
-    border-radius: 1.6rem 1.6rem 0.8rem 0;
-    border: 1.5px solid var(--light-color);
+    border-radius: 1.6rem 1.6rem 0 0;
+    background: var(--white-color);
+    //border: 1.5px solid var(--light-color);
   }
 
   &__dishes {
@@ -100,7 +102,9 @@ function handleDishSelect(dish: Dish) {
     grid: auto / repeat(auto-fill, minmax(13rem, 1fr));
     gap: 1.2rem;
 
-    border-left: 1.5px solid var(--light-color);
+    border-radius: 0 1.6rem 1.6rem 1.6rem;
+    background: var(--white-color);
+    //border-left: 1.5px solid var(--light-color);
   }
 }
 

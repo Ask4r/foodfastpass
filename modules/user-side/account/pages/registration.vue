@@ -7,6 +7,9 @@
 * */
 
 
+
+const isEmailInCheck = ref(false);
+
 const username = ref('');
 const email = ref('');
 const password = ref('');
@@ -29,15 +32,23 @@ const isSubmitReady = computed(() => {
 });
 
 
-function submit() {
+onBeforeUnmount(() => {
+  isEmailInCheck.value = false;
+});
+
+
+async function submit() {
   if (!isSubmitReady)
     return;
 
-  registerUser(
+  const response = await registerUser(
     email.value.trim(),
     username.value.trim(),
     password.value.trim(),
   );
+
+  if (response === null)
+    isEmailInCheck.value = true;
 }
 
 </script>
@@ -74,6 +85,13 @@ function submit() {
       >
         Sign up
       </button>
+
+      <p
+        v-if="isEmailInCheck"
+        class="registration__bottom-text"
+      >
+        The verification mail has been sent. Please check you mailbox.
+      </p>
 
     </section>
 
@@ -133,6 +151,12 @@ function submit() {
     &_disabled {
       background: var(--medium-color);
     }
+  }
+
+  &__bottom-text {
+    color: var(--dark-color);
+    font: 400 normal 1.6rem/1.5 Inter, sans-serif;
+    text-wrap: balance;
   }
 }
 

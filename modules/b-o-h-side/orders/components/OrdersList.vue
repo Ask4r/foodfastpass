@@ -8,7 +8,6 @@ provide('refreshOrders', refreshOrders);
 
 async function refreshOrders() {
   orders.value = await getBOHOrders();
-  console.log(orders.value);
 }
 
 </script>

@@ -46,7 +46,7 @@ export default defineNuxtConfig({
   ],
   nitro: {
     prerender: {
-      /*ignore: [ '/', '/restaurants', '/boh/orders', ],*/
+      routes: [ '/' ],
     },
   },
   pwa: {

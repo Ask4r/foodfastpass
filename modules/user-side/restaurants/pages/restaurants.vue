@@ -2,12 +2,26 @@
 
 const restaurants = useRestaurants();
 
+const isSidebarActive = ref(false);
+
+
+provide('showSideBar', showSideBar);
+
+
+function showSideBar() {
+  isSidebarActive.value = true;
+}
+
 </script>
 
 <template>
   <article class="restaurants-list">
 
     <TheRestaurantsHeader/>
+
+    <SideBar
+      v-model:is-active="isSidebarActive"
+    />
 
     <main class="restaurants-list__main">
 

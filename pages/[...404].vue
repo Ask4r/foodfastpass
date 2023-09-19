@@ -10,10 +10,10 @@
 
     <nuxt-link
       is="button"
-      to="/restaurants"
+      to="/"
       class="not-found__button not-found__button_dark"
     >
-      Take me to the restaurants
+      Take me home
     </nuxt-link>
 
     <button
@@ -81,7 +81,7 @@
     border: none;
     border-radius: 0.8rem;
 
-    font: 500 normal 1.6rem/1.5 Inter, sans-serif;
+    font: 600 normal 1.6rem/1.5 Inter, sans-serif;
 
     text-decoration: none;
 
@@ -92,7 +92,8 @@
 
     &_light {
       color: var(--dark-color);
-      background: var(--light-color);
+      background: var(--white-color);
+      border: solid 1px var(--medium-color);
     }
   }
 }

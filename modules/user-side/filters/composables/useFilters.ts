@@ -1,4 +1,4 @@
-import type { Dish } from '~/modules/menu/types';
+import type { Dish } from '~/modules/user-side/menu/types';
 
 
 const diets = [ 'Vegan', 'Vegetarian', 'Pescatarian' ];
@@ -42,13 +42,15 @@ function areFiltersApproved(dish: Dish): boolean {
 
   const passRating = dish.rating >= chosenRating.value;
 
-  const passMeatType = dish.mealTypes.includes('ETC')
-    || dish.mealTypes.includes(chosenMealType.value);
+  const lowerMealTypes = dish.mealTypes.map(w => w.toLowerCase());
+
+  const passMealType = lowerMealTypes.includes('etc')
+    || lowerMealTypes.includes(chosenMealType.value.toLowerCase());
 
   return passDiets
     && passAllergens
     && passRating
-    && passMeatType;
+    && passMealType;
 }
 
 function reset() {
@@ -56,6 +58,12 @@ function reset() {
   chosenAllergens.splice(0);
   chosenRating.value = 0;
 }
+
+const filtersAmount = computed(() => {
+  return chosenDiets.length
+    + chosenAllergens.length
+    + Number(chosenRating.value > 0);
+});
 
 export default function () {
   return {
@@ -67,6 +75,7 @@ export default function () {
     chosenMealType,
     areFiltersApproved,
     reset,
+    filtersAmount,
     onFiltersChange: filtersChange.on,
   };
 }

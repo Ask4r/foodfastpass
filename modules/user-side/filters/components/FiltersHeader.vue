@@ -6,6 +6,7 @@ defineProps<{
 
 const emits = defineEmits<{
   reset: [];
+  exit: [];
 }>();
 
 </script>
@@ -17,13 +18,20 @@ const emits = defineEmits<{
       Filters
     </p>
 
+    <span style="height: 2rem;">
     <transition name="reset">
-      <ResetIcon
-        v-if="isResettable"
-        class="header__reset"
-        @click="emits('reset')"
-      />
+        <ResetIcon
+          v-if="isResettable"
+          class="header__reset"
+          @click="emits('reset')"
+        />
     </transition>
+    </span>
+
+    <CrossIcon
+      class="header__exit"
+      @click="emits('exit')"
+    />
 
   </header>
 </template>
@@ -58,18 +66,21 @@ const emits = defineEmits<{
 
 
 .header {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
+  display: grid;
+  grid: auto / max-content auto min-content;
+  place-items: center start;
   gap: 1.6rem;
 
   &__name {
-    margin: 0;
-    color: #000;
+    color: var(--black-color);
     font: 400 normal 2.4rem/1.5 Inter, sans-serif;
   }
 
   &__reset {
+
+  }
+
+  &__exit {
 
   }
 }

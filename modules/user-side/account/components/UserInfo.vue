@@ -5,6 +5,7 @@ const userInfo = await getUserInfo();
 
 function logOut() {
   localStorage.setItem('foodfastpass_user_token', '');
+  window.location.reload();
 }
 
 </script>

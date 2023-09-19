@@ -1,6 +1,6 @@
-export default async function (email: string, username: string, password: string) {
+export default async function (email: string, username: string, password: string): Promise<any> {
 
-  const { data } = await useCustomFetch(
+  const { data, error, refresh } = await useCustomFetch(
     '/auth/users/',
     {
       method: 'POST',
@@ -13,4 +13,11 @@ export default async function (email: string, username: string, password: string
     },
   );
 
+  await refresh();
+
+  // console.log(data.value);
+
+  // console.log(error.value);
+
+  return data.value;
 }

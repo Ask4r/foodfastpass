@@ -124,8 +124,9 @@ async function share() {
     font: 500 normal 1.8rem/1.5 Inter, sans-serif;
 
     border-radius: 0.8rem;
-    border: 1px solid var(--light-color);
+    border: 1px solid var(--medium-color);
 
+    transition: all .2s ease;
     resize: none;
 
     //transition: all ease .2s;
@@ -137,7 +138,7 @@ async function share() {
 
     &:focus {
       outline: none;
-      border: 1px solid var(--light-color);
+      border: 1px solid var(--dark-color);
     }
   }
 
@@ -162,7 +163,7 @@ async function share() {
     border: none;
     border-radius: 0.8rem;
 
-    font: 500 normal 1.8rem/1.5 Inter, sans-serif;
+    font: 600 normal 1.6rem/1.5 Inter, sans-serif;
 
     transition: all ease .2s;
 
@@ -176,8 +177,9 @@ async function share() {
     }
 
     &_go-back {
-      color: var(--dark-color);
-      background: var(--light-color);
+        color: var(--dark-color);
+        background: var(--white-color);
+        border: solid 1px var(--medium-color);
     }
 
   }

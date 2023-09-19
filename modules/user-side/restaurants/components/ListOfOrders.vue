@@ -3,7 +3,11 @@
 import { Restaurant } from '~/modules/user-side/restaurants/types';
 
 
-const orders = await getOrders();
+const orders = await getOrders()
+  .then(orders => orders?.filter(order => {
+    return order?.active;
+  }));
+
 
 const restaurants = await getRestaurants();
 
@@ -17,7 +21,6 @@ function restaurantById(restaurantId: number): Restaurant | undefined {
 </script>
 
 <template>
-  <client-only>
     <section v-if="orders?.length > 0" class="orders">
 
       <div
@@ -48,7 +51,6 @@ function restaurantById(restaurantId: number): Restaurant | undefined {
       </div>
 
     </section>
-  </client-only>
 </template>
 
 <style scoped lang="scss">

@@ -1,4 +1,10 @@
 export default defineNuxtRouteMiddleware((to, from) => {
-  /*if (to.path === '/')
-    return navigateTo('/restaurants');*/
+  if (process.client) {
+
+    // TODO: proper middleware
+    /*if (to.path === '/') {
+      return navigateTo('/restaurants');
+    }*/
+
+  }
 });

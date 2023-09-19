@@ -26,7 +26,8 @@ export default defineNuxtModule({
     extendPages((pages) => {
       pages.push({
         name: 'Restaurants',
-        path: '/restaurants',
+        // path: '/restaurants',
+        path: '/',
         file: resolve(__dirname, './pages/restaurants.vue'),
       });
     });

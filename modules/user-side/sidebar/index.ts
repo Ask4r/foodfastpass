@@ -16,5 +16,10 @@ export default defineNuxtModule({
       pathPrefix: false,
     }).then();
 
+    addComponentsDir({
+      path: resolve(__dirname, './icons'),
+      pathPrefix: false,
+    }).then();
+
   },
 });
