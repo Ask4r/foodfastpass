@@ -12,7 +12,7 @@ export default defineNuxtConfig({
       noscript: [
         { children: 'JavaScript is required' },
       ],
-      title: 'Canteen on the Fly',
+      title: 'FoodFastPass',
     },
   },
   components: true,
@@ -22,9 +22,9 @@ export default defineNuxtConfig({
   ],
   devServerHandlers: [],
   devtools: { enabled: false },
-  experimental: {
+  /*experimental: {
     payloadExtraction: false,
-  },
+  },*/
   modules: [
     '@vueuse/nuxt',
     'vue3-carousel-nuxt',

@@ -7,7 +7,7 @@ const orderId = useRoute().params.orderId as string;
 <template>
   <header class="header">
 
-    <ReturnArrow
+    <BoldArrow
       class="header__return"
       @click="$router.go(-1)"
     />

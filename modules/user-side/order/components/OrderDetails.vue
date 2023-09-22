@@ -5,6 +5,7 @@ import { Dish } from '~/modules/user-side/menu/types';
 
 defineProps<{
   cart: Dish[];
+  quantities: {[i: number]: number};
 }>();
 
 
@@ -34,7 +35,8 @@ const coupon = ref('NEWCUSTOMER');
           <p>{{ 1 }}x</p>
           <p>{{ product.name }}</p>
           <p class="details__price">
-            {{ currencyMap[product.currency] + (product.price * 1).toFixed(2) }}
+            {{ currencyMap[product.currency]
+            + (product.price * quantities[product.id]).toFixed(2) }}
           </p>
         </template>
       </section>
@@ -89,7 +91,7 @@ const coupon = ref('NEWCUSTOMER');
 
     display: flex;
     flex-direction: column;
-    gap: 3.2rem;
+    gap: 1.6rem;
 
     border-radius: 0.8rem;
     background: var(--white-color);
@@ -116,9 +118,13 @@ const coupon = ref('NEWCUSTOMER');
   }
 
   &__summary-section {
+    padding-top: 1.6rem;
+
     display: flex;
     flex-direction: column;
-    gap: 0.8rem
+    gap: 0.8rem;
+
+    border-top: solid 0.1rem var(--light-gray-color);
   }
 
   &__section-item {

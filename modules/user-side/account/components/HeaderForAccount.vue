@@ -5,7 +5,7 @@
 <template>
   <header class="header">
 
-    <ReturnArrow
+    <BoldArrow
       class="header__return"
       @click="$router.push('/')"
     />

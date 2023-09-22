@@ -41,6 +41,7 @@ function getOrderById(orderId: string): Order | undefined {
       />
       <OrderDetails
         :cart="order?.products"
+        :quantities="order?.quantity"
       />
       <CollectionDetails/>
     </main>

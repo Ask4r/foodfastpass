@@ -21,7 +21,7 @@ const emits = defineEmits<{
 
     <button
       :class="['footer__checkout-button', {'footer__checkout-button_disabled': !readyForCheckout}]"
-      @click="emits('submit')"
+      @click="readyForCheckout ? emits('submit') : ''"
     >Checkout</button>
 
   </footer>

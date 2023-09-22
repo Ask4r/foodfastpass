@@ -54,6 +54,8 @@ function isCheckoutReady(): boolean {
 
   for (const position in cart.value) {
 
+    console.log(cart.value[position])
+
     if (cart.value[position].quantity === 0)
       continue;
 
@@ -74,6 +76,12 @@ function isCheckoutReady(): boolean {
   const areMealTypesApproved = mealTypes.size <= 1;
 
   const isAmountApproved = dishesAmount > 0;
+
+  console.log(
+    areRestaurantsApproved,
+    areMealTypesApproved,
+    isAmountApproved
+  )
 
 
   return areRestaurantsApproved

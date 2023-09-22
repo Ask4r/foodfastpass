@@ -1,26 +1,18 @@
 <script setup lang="ts">
 
-const router = useRouter();
-
-const showSideBar = inject('showSideBar') as Function;
-
 </script>
 
 <template>
   <header class="header">
 
-    <BurgerMenu
-      class="header__burger"
-      @click="showSideBar"
+    <BoldArrow
+      class="header__return"
+      @click="$router.go(-1)"
     />
 
     <h1 class="header__title">
-      FoodFastPass
+      Orders
     </h1>
-
-    <SearchIcon
-      class="header__search"
-    />
 
   </header>
 </template>
@@ -37,7 +29,7 @@ const showSideBar = inject('showSideBar') as Function;
   top: 0;
 
   display: grid;
-  grid: "menu title search" auto / 2.4rem auto 2.4rem;
+  grid: auto / 2rem auto 2rem;
   place-items: center;
 
   border-radius: 0 0 0.8rem 0.8rem;
@@ -50,7 +42,6 @@ const showSideBar = inject('showSideBar') as Function;
   z-index: 2000;
 
   &__title {
-    grid-area: title;
     color: var(--black-color);
     font: 400 normal 2.4rem/1.5 Inter, sans-serif;
   }

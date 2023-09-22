@@ -103,7 +103,7 @@ function logOut() {
 .sidebar {
   height: 100dvh;
 
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
 

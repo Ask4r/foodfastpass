@@ -22,11 +22,18 @@ export default defineNuxtModule({
     }).then();
 
     extendPages((pages) => {
-      pages.push({
-        name: 'Order',
-        path: '/order/:orderId',
-        file: resolve(__dirname, './pages/order/[orderId].vue'),
-      });
+      pages.push(
+        {
+          name: 'Order',
+          path: '/order/:orderId',
+          file: resolve(__dirname, './pages/order/[orderId].vue'),
+        },
+        {
+          name: 'Orders',
+          path: '/orders',
+          file: resolve(__dirname, './pages/UserOrders'),
+        },
+      );
     });
 
   },

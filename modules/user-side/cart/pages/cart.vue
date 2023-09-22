@@ -22,7 +22,9 @@ const error = ref(false);
 
 
 async function handlePostOrder() {
-  const response = await postOrder(coupon.value, currentTimeslot.value.start);
+
+  const response = await postOrder(coupon.value,
+    currentTimeslot.value.start);
 
   clientSecret.value = response ?? '';
 
@@ -31,16 +33,13 @@ async function handlePostOrder() {
   if (result.hasOwnProperty('error'))
     error.value = true;
 
-
   error.value = false;
 
   await submitOrder();
 
   refreshCart();
 
-
-
-  navigateTo('/restaurants');
+  navigateTo('/');
 }
 
 </script>

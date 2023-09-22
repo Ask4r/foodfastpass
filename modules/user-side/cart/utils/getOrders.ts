@@ -20,7 +20,7 @@ export default async function (): Promise<Order[] | undefined> {
     },
   );
 
-  await refresh()
+  await refresh();
 
   return data.value as Order[];
 }
