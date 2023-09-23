@@ -40,6 +40,16 @@ export default defineNuxtModule({
           path: '/registration',
           file: resolve(__dirname, './pages/registration.vue'),
         },
+        {
+          name: 'ResetPassword',
+          path: '/reset_password/:uid/:token',
+          file: resolve(__dirname, './pages/reset-password.vue'),
+        },
+        {
+          name: 'RequestReset',
+          path: '/request_reset',
+          file: resolve(__dirname, './pages/request-reset.vue'),
+        },
       );
     });
 

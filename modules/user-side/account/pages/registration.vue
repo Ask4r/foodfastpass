@@ -10,6 +10,8 @@
 
 const isEmailInCheck = ref(false);
 
+const isFailed = ref(false);
+
 const username = ref('');
 const email = ref('');
 const password = ref('');
@@ -38,8 +40,10 @@ onBeforeUnmount(() => {
 
 
 async function submit() {
-  if (!isSubmitReady)
+  if (!isSubmitReady) {
+    isFailed.value = true;
     return;
+  }
 
   const response = await registerUser(
     email.value.trim(),
@@ -47,8 +51,10 @@ async function submit() {
     password.value.trim(),
   );
 
-  if (response === null)
+  if (response === null) {
     isEmailInCheck.value = true;
+    isFailed.value = false;
+  }
 }
 
 </script>
@@ -91,6 +97,10 @@ async function submit() {
         class="registration__bottom-text"
       >
         The verification mail has been sent. Please check you mailbox.
+      </p>
+
+      <p v-if="isFailed" class="registration__error">
+        Something went wrong. Please check your info or try again later.
       </p>
 
     </section>
@@ -156,6 +166,13 @@ async function submit() {
   &__bottom-text {
     color: var(--dark-color);
     font: 400 normal 1.6rem/1.5 Inter, sans-serif;
+    text-wrap: balance;
+  }
+
+  &__error {
+    color: var(--dark-color);
+    font: 400 normal 1.6rem/1.5 Inter, sans-serif;
+    text-decoration: none;
     text-wrap: balance;
   }
 }

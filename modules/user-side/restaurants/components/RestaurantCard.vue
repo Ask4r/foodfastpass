@@ -44,9 +44,6 @@ const props = defineProps<{
 
 .card {
   width: 100%;
-  height: 20rem;
-
-  position: relative;
 
   background: var(--white-color);
   border-radius: 16px;
@@ -57,7 +54,7 @@ const props = defineProps<{
 
   &__photo {
     width: 100%;
-    height: 100%;
+    height: 16rem;
     object-fit: cover;
   }
 
@@ -65,7 +62,6 @@ const props = defineProps<{
     width: 100%;
     padding: 0 .8rem .6rem .8rem;
 
-    position: absolute;
     bottom: 0;
     left: 0;
 

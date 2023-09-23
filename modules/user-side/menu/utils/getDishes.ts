@@ -15,5 +15,7 @@ export default async function (restaurantName: string): Promise<RawDish[]> {
     },
   );
 
+  console.log(data.value)
+
   return data.value as RawDish[];
 }

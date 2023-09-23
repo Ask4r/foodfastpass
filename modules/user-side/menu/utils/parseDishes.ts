@@ -9,7 +9,7 @@ export default function (rawDishes: RawDish[], restaurantName: string): Categori
   const categories: Categories = {};
 
   for (const dish of rawDishes) {
-    const category = dish.category ?? 'Other dishes';
+    const category = dish.categories ?? 'Other dishes';
 
     if (!categories.hasOwnProperty(String(category)))
       categories[category] = [];

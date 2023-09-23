@@ -15,9 +15,5 @@ export default async function (email: string, username: string, password: string
 
   await refresh();
 
-  // console.log(data.value);
-
-  // console.log(error.value);
-
   return data.value;
 }

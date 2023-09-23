@@ -3,6 +3,7 @@
 const username = ref('');
 const password = ref('');
 
+const isFailed = ref(false);
 
 const isSubmitReady = computed(() => {
   const isNotEmpty = username.value !== ''
@@ -13,12 +14,20 @@ const isSubmitReady = computed(() => {
 
 
 function submit() {
-  if (!isSubmitReady)
+  if (!isSubmitReady) {
+    isFailed.value = true;
     return;
+  }
 
-  getUserToken(username.value, password.value).then(() => {
+  const result = getUserToken(username.value, password.value).then(() => {
+    isFailed.value = false;
     navigateTo('/');
   });
+
+  if (!(result ?? false)) {
+    isFailed.value = true;
+    return;
+  }
 }
 
 </script>
@@ -43,7 +52,17 @@ function submit() {
       Sign in
     </button>
 
-    <NuxtLink href="/registration" class="registration__link">Don't have an account yet? Sign up.</NuxtLink>
+    <NuxtLink href="/registration" class="registration__link">
+      Don't have an account yet? Sign up.
+    </NuxtLink>
+
+    <NuxtLink href="/request_reset" class="registration__link">
+      Forgot your password?
+    </NuxtLink>
+
+    <p v-if="isFailed" class="registration__error">
+      Something went wrong. Please check your info or try again later.
+    </p>
 
   </section>
 </template>
@@ -106,6 +125,13 @@ function submit() {
     color: var(--primary-color);
     font: 400 normal 1.4rem/1.5 Inter, sans-serif;
     text-decoration: none;
+  }
+
+  &__error {
+    color: var(--dark-color);
+    font: 400 normal 1.6rem/1.5 Inter, sans-serif;
+    text-decoration: none;
+    text-wrap: balance;
   }
 }
 

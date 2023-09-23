@@ -7,7 +7,7 @@ export default async function () {
     return;
   }
 
-  const {data} = useCustomFetch(
+  const { data} = await useCustomFetch(
     '/auth/users/me/',
     {
       method: 'GET',
@@ -17,5 +17,6 @@ export default async function () {
     }
   );
 
-  return data
+
+  return data.value
 }
