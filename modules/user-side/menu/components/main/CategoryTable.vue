@@ -80,7 +80,7 @@ function handleDishSelect(dish: Dish) {
   &__table-name {
     height: min-content;
 
-    padding: 0.2rem 0.8rem;
+    padding: 0.6rem 0.8rem 0.2rem 0.8rem;
 
     color: var(--black-color);
     font: 300 normal 1.8rem/1.5 Inter, sans-serif;

@@ -15,10 +15,10 @@ const orders = await getOrders();
 
     <main class="orders__main">
 
-      <p class="orders__title">Resent orders</p>
+      <p class="orders__title">Recent orders</p>
 
       <OrderPreview
-        v-for="order in orders"
+        v-for="order in orders.sort((a, b) => Math.random() > 0.5 ? 1 : -1)"
         :key="order.id"
         :order="order"
         @click="$router.push(`/order/${order.id}`)"

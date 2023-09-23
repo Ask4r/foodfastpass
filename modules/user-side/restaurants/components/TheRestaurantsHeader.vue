@@ -54,6 +54,10 @@ const showSideBar = inject('showSideBar') as Function;
     color: var(--black-color);
     font: 400 normal 2.4rem/1.5 Inter, sans-serif;
   }
+
+  &__search {
+    display: none;
+  }
 }
 
 </style>

@@ -43,7 +43,7 @@ function getOrderById(orderId: string): Order | undefined {
         :cart="order?.products"
         :quantities="order?.quantity"
       />
-      <CollectionDetails/>
+      <CollectionDetails :collection-status="order?.timestamp ?? 'pending'"/>
     </main>
 
   </article>

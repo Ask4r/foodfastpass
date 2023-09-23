@@ -18,8 +18,12 @@ function add(dish: Dish) {
 }
 
 function remove(dish: Dish) {
-  if (cart.value.hasOwnProperty(dish.id) && cart.value[dish.id].quantity > 0)
+  if (cart.value.hasOwnProperty(dish.id)
+    && cart.value[dish.id].quantity > 0)
     cart.value[dish.id].quantity--;
+  
+  if (cart.value[dish.id].quantity === 0)
+    delete cart.value[dish.id];
 }
 
 function refresh() {

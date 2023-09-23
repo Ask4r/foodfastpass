@@ -32,7 +32,7 @@ const coupon = ref('NEWCUSTOMER');
           v-for="product in cart"
           :key="product.id"
         >
-          <p>{{ 1 }}x</p>
+          <p>{{ quantities[product.id] }}x</p>
           <p>{{ product.name }}</p>
           <p class="details__price">
             {{ currencyMap[product.currency]

@@ -67,7 +67,7 @@ function submit() {
         Log in
       </button>
 
-      <p class="auth__bottom-text">For password and account management issues please contact out customer service.</p>
+      <p class="auth__bottom-text">For password and account management issues please contact our customer service.</p>
 
     </main>
 

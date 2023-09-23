@@ -15,7 +15,7 @@ const card = ref();
 const currentSection = ref(1);
 
 
-const { showContent, onShow, onHide } = useSwipeCard(card);
+const { showContent, hideContent, onShow, onHide } = useSwipeCard(card);
 
 
 onShow(() => {
@@ -26,6 +26,9 @@ onHide(() => {
   document.body.style.overscrollBehavior = 'auto';
   currentSection.value = 1;
 });
+
+
+provide('hideCard', hideContent);
 
 
 defineExpose({

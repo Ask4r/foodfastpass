@@ -6,5 +6,9 @@ export default defineNuxtRouteMiddleware((to, from) => {
       return navigateTo('/restaurants');
     }*/
 
+    if (to.path === '/waitlist') {
+      return navigateTo('/waitlist/testtest');
+    }
+
   }
 });

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 
-const collectionStatus = ref('pending');
+defineProps<{
+  collectionStatus: string;
+}>();
 
 </script>
 
@@ -17,7 +19,7 @@ const collectionStatus = ref('pending');
     <div class="collection__section-item">
       <p>Collected</p>
       <p :class="['collection__status', {'collection__status_pending': collectionStatus === 'pending'} ]">
-        Pending...
+        {{ collectionStatus ?? 'Pending...' }}
       </p>
     </div>
   </div>

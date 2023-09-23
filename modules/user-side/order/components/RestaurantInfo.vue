@@ -27,7 +27,10 @@ defineProps<{
       Pickup at {{ timeSlot }}
     </p>
 
-    <a href="#" class="restaurant__directions">
+    <a
+      href="https://maps.app.goo.gl/DCKvy2BaQexrdn7n7?g_st=ic"
+      class="restaurant__directions"
+    >
       Get directions
     </a>
 

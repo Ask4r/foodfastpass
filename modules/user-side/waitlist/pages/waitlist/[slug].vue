@@ -3,10 +3,8 @@
 onMounted(() => {
   useEventListener(window, 'beforeunload', () => {
     window.scrollTop(0);
-  })
+  });
 });
-
-
 
 </script>
 

@@ -1,6 +1,3 @@
-import { aw } from '~/dist/_nuxt/entry.a1124aa2';
-
-
 export default async function () {
 
   const token = useAuthToken();

@@ -27,7 +27,11 @@ const props = defineProps<{
         {{ restaurant.name }}
       </h3>
 
-      <a href="#" class="card__link" @click.stop>
+      <a
+        href="https://maps.app.goo.gl/DCKvy2BaQexrdn7n7?g_st=ic"
+        class="card__link"
+        @click.stop
+      >
         Get directions
       </a>
 

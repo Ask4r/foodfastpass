@@ -9,6 +9,12 @@ defineProps<{
 }>();
 
 
+const currencyMap = {
+  'eur': '€',
+  '€': '€',
+};
+
+
 const restaurants = await getRestaurants();
 
 
@@ -30,15 +36,18 @@ function restaurantById(restaurantId: number): Restaurant | undefined {
     />
 
     <p class="order__name">
-      {{ restaurantById(Number(order.rest))?.name }}
+      {{ restaurantById(Number(order.rest))?.name }} #{{ order.id }}
     </p>
 
-    <p class="order__timeslot">
-      Pickup at {{ order?.timeSlot }}
-    </p>
-
-    <p class="order__id">
-      #{{ order.id }}
+    <p class="order__sub-info">
+      {{
+        order.products?.length > 0 ?
+          currencyMap[order.products[0].currency]
+          + order.products
+            .reduce((accumulator, currentValue) => accumulator + Number(currentValue.price), 0)
+            .toFixed(2) :
+          '0.00'
+      }} • {{ order?.timestamp ? 'Collected ' + order.timestamp : 'pending' }}
     </p>
 
   </section>
@@ -51,8 +60,8 @@ function restaurantById(restaurantId: number): Restaurant | undefined {
   padding: 0.8rem;
 
   display: grid;
-  grid: "image name id" auto
-        "image timeslot id" auto
+  grid: "image main" auto
+        "image sub" auto
         / 5.4rem auto max-content;
   gap: 0 1.2rem;
   place-items: center start;
@@ -72,22 +81,16 @@ function restaurantById(restaurantId: number): Restaurant | undefined {
   }
 
   &__name {
-    grid-area: name;
+    grid-area: main;
     color: var(--black-color);
     font: 500 normal 2rem/1.2 Inter, sans-serif;
     //word-break: break-word;
   }
 
-  &__timeslot {
-    grid-area: timeslot;
-    color: var(--dark-gray-color);
-    font: 500 normal 1.6rem/1.5 Inter, sans-serif;
-  }
-
-  &__id {
-    grid-area: id;
+  &__sub-info {
+    grid-area: sub;
     color: var(--black-color);
-    font: 500 normal 1.6rem/1.5 Inter, sans-serif;
+    font: 400 normal 1.3rem/1.5 Inter, sans-serif;
   }
 }
 

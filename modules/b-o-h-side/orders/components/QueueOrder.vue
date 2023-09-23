@@ -3,9 +3,10 @@
 import type { Order } from '~/modules/b-o-h-side/orders/types';
 
 
-defineProps<{
+const props = defineProps<{
   order: Order,
 }>();
+
 
 const now = useNow();
 
@@ -13,7 +14,7 @@ const refreshOrders = inject('refreshOrders');
 
 
 function isSoon(timeSlot: string) {
-  const [hour, minute] = timeSlot.split(':').map(n => parseInt(n));
+  const [ hour, minute ] = timeSlot.split(':').map(n => parseInt(n));
 
   const hourDifference = hour - now.value.getHours();
   const minutesDifference = hourDifference * 60 + minute - now.value.getMinutes();
@@ -32,17 +33,17 @@ function isSoon(timeSlot: string) {
 
       <div class="order__dishes">
         <div
-          v-for="position in order.products"
-          :key="position.dishName"
+          v-for="product in order.products"
+          :key="product.dishName"
           class="order__position"
         >
-          <p class="order__quantity">{{ 1 }}x</p>
-          <p class="order__dish-name">{{ position.name }}</p>
+          <p class="order__quantity">{{ order.quantity[product.id] }}x</p>
+          <p class="order__dish-name">{{ product.name }}</p>
         </div>
       </div>
 
       <p :class="['order__timeslot', {'order__timeslot_soon': isSoon(order.timeSlot)}]">
-        {{order.timeSlot}}
+        {{ order.timeSlot }}
       </p>
 
     </div>
@@ -68,7 +69,7 @@ function isSoon(timeSlot: string) {
 
   /* shadow lg */
   box-shadow: 0 12px 16px -4px rgba(54, 54, 171, 0.08),
-    0 4px 6px -2px rgba(54, 54, 171, 0.03);
+  0 4px 6px -2px rgba(54, 54, 171, 0.03);
 
   &__info {
     margin-bottom: 5.4rem;
